@@ -1,0 +1,28 @@
+<div layout="row" layout-align="space-between" class="card_title_container">
+  <div class="card_title">CONSULTA RÁPIDA</div>
+  <div ng-click="initFastQuery()" style="cursor:pointer; color:#fff; font-size:11px; font-weight:bold;">
+    Resetar
+  </div>
+</div>
+
+<div layout="column" layout-aling="center center">
+  <div layout="row" layout-aling="center center">
+    <div class="card_consult-left">CBOT</div>
+    <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.cbot" ng-change="calculateFrame()">
+  </div>
+
+  <div layout="row" layout-aling="center center" style="margin-top: 10px;">
+    <div class="card_consult-left">BASIS</div>
+    <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.basis" ng-change="calculateFrame()">
+  </div>
+
+  <div layout="row" layout-aling="center center" style="margin-top: 10px;">
+    <div class="card_consult-left">DÓLAR</div>
+    <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.dolar" ng-change="calculateFrame()">
+  </div>
+
+  <div style="margin-top: 20px;" layout="row">
+    <div class="card_consult-left">PREÇO</div>
+    <div class="card_consult-right" align="center" style="border: 1px dotted #fff; background: transparent; color: #fff">R$ {{fast_query.price}}/ton</div>
+  </div>
+</div>

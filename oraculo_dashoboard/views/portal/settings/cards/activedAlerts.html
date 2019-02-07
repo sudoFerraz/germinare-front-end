@@ -1,0 +1,88 @@
+<div class="order_pendent-header-container" layout="row">
+  ALERTAS ATIVOS
+</div>
+<div layout="column" class="order-pedent-container">
+
+  <div layout="row" class="order_pendent-header">
+    <div class="actived_alerts-header-container">Váriavel</div>
+    <div class="actived_alerts-header-container">Preço</div>
+    <div class="actived_alerts-header-container">Indicador</div>
+    <div class="actived_alerts-header-container">Mês</div>
+    <div class="actived_alerts-header-container">Ações</div>
+  </div>
+
+  <div style="max-height:250px; overflow-y:auto">
+    <div class="actived_alerts-container" ng-repeat="activedAlert in activedAlerts" ng-if="activedAlert.flag_cbot || activedAlert.flag_basis || activedAlert.flag_dolar">
+      
+      <div layout="row" style="padding: 7px 0;" ng-if="activedAlert.flag_cbot">
+        <div class="actived_alerts-header-container">
+          CBOT
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">{{activedAlert.trigger_cbot | number: 2}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">
+            {{activedAlert.direction_cbot == 1? '&#60;' : '&#62;'}}
+          </span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order_pendent-sub-text" style="margin: 0;" ng-if="!activedAlert.flag_basis || !activedAlert.flag_dolar">{{ activedAlert.month_reference | limitTo: 3}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Deletar" ng-click="deleteActiveAlert(activedAlert.id)"/>
+          <img src="/assets/images/icons/edit.png" class="order-pedent-btn" title="Editar" style="margin-left: 5px;" ng-click="openActiveAlertEdit(activedAlert)"/>
+        </div>
+      </div>
+  
+      <div layout="row" style="padding: 7px 0; border-top: {{activedAlert.flag_cbot == true? '1px solid rgba(255, 255, 255, 0.2)': 'none'}};" ng-if="activedAlert.flag_basis">
+        <div class="actived_alerts-header-container">
+          BASIS
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">{{activedAlert.trigger_basis | number: 2}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">
+            {{activedAlert.direction_basis == 1? '&#60;' : '&#62;'}}
+          </span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order_pendent-sub-text" style="margin: 0;" ng-if="activedAlert.flag_cbot == activedAlert.flag_dolar || !activedAlert.flag_cbot">{{ activedAlert.month_reference | limitTo: 3}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Deletar" ng-click="deleteActiveAlert(activedAlert.id)"/>
+          <img src="/assets/images/icons/edit.png" class="order-pedent-btn" title="Editar" style="margin-left: 5px;" ng-click="openActiveAlertEdit(activedAlert)"/>
+        </div>
+      </div>
+  
+      <div layout="row" style="padding: 7px 0; border-top: {{activedAlert.flag_cbot == true || activedAlert.flag_basis == true ? '1px solid rgba(255, 255, 255, 0.2)': 'none'}};" ng-if="activedAlert.flag_dolar">
+        <div class="actived_alerts-header-container">
+          DOLAR
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">{{activedAlert.trigger_dolar | number: 2}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order-pedent-text-filled">
+            {{activedAlert.direction_dolar == 1? '&#60;' : '&#62;'}}
+          </span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <span class="order_pendent-sub-text" style="margin: 0; text-transform: uppercase;" ng-if="!activedAlert.flag_cbot && !activedAlert.flag_basis">{{ activedAlert.month_reference | limitTo: 3}}</span>
+        </div>
+        <div class="actived_alerts-header-container">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Deletar" ng-click="deleteActiveAlert(activedAlert.id)"/>
+          <img src="/assets/images/icons/edit.png" class="order-pedent-btn" title="Editar" style="margin-left: 5px;" ng-click="openActiveAlertEdit(activedAlert)"/>
+        </div>
+      </div>
+    
+    </div>
+  
+    <div ng-show="activedAlerts.length == 0" layout="row" layout-align="center center">
+      <h5>Nenhum alerta encontrado.</h5>
+    </div>
+  </div>
+  
+  
+</div>

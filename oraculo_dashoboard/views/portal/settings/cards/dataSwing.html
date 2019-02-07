@@ -1,0 +1,29 @@
+<div class="order_pendent-header-container" layout="row">
+  DADOS SWING
+</div>
+<div layout="column" class="order-pedent-container">
+
+  <div layout="row" class="order_pendent-header" align="center">
+    <div class="data_swing-header">Classe</div>
+    <div class="data_swing-header">Frequência</div>
+    <div class="data_swing-header">Posição</div>
+  </div>
+
+  <div style="max-height:250px; overflow-y:auto">
+    <div class="actived_alerts-container" ng-repeat="data in dataSwings">
+      <div layout="row" align="center">
+        <div class="data_swing-header">
+          {{data.start}}, {{data.end}}
+        </div>
+        <div class="data_swing-header">
+          {{data.frequency}}
+        </div>
+        <div class="data_swing-header">
+          <img src="/assets/images/icons/greenlabel.png" style="height: 15px;" ng-if="data.flag == 2">
+          <img src="/assets/images/icons/redlabel.png" style="height: 15px;" ng-if="data.flag == 1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

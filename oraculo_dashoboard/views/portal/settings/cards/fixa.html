@@ -1,0 +1,77 @@
+<div class="order_pendent-header-container" layout="row">
+  FIXAR
+  <div style="margin-left: 15px;">
+    <select class="card_consult-select" style="margin-left: 5px;" ng-model="fixa.month" ng-change="selectMonth(fixa.month)" value="{{fixa.month}}">
+      <option value="{{selectedContractMonths[$index].id}}" ng-repeat="month in selectedContractMonths" label="{{month.reference_month}}">{{month.reference_month}}</option>
+    </select>
+  </div>
+</div>
+<div layout="column" class="order-pedent-container">
+  <div layout="row" style="padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.2)" align="center">
+    <div class="order_pendent-range-container" flex="50" layout="row">
+      <span style="color: #fff; margin-top: 15px;">CBOT</span>
+      <md-slider md-discrete min="{{fixa.min_cbot}}" max="{{fixa.cbot_vol}}" ng-model="fixa.fixated_cbot" flex="70" style="margin-left: 20px;"></md-slider>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Volume" class="fixa-input" ng-model="fixa.fixated_cbot">
+      <span class="fixa-input-label">volume /TON</span>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Preço" class="fixa-input" ng-model="fixa.cbot">
+      <span class="fixa-input-label">preço</span>
+    </div>
+    <div flex="10">
+      <label class="switch">
+        <input type="checkbox" ng-model="fixa.cbot_flag">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+  
+  <div layout="row" style="padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.2)" align="center">
+    <div class="order_pendent-range-container" flex="50" layout="row">
+      <span style="color: #fff; margin-top: 15px;">BASIS</span>
+      <md-slider md-discrete min="{{fixa.min_basis}}" max="{{fixa.basis_vol}}" ng-model="fixa.fixated_basis" flex="70" style="margin-left: 20px;"></md-slider>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Volume" class="fixa-input" ng-model="fixa.fixated_basis">
+      <span class="fixa-input-label">volume /TON</span>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Preço" class="fixa-input" ng-model="fixa.basis">
+      <span class="fixa-input-label">preço</span>
+    </div>
+    <div flex="10">
+      <label class="switch">
+        <input type="checkbox" ng-model="fixa.basis_flag">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <div layout="row" style="padding: 20px;" align="center">
+    <div class="order_pendent-range-container" flex="50" layout="row">
+      <span style="color: #fff; margin-top: 15px;">DÓLAR</span>
+      <md-slider md-discrete min="{{fixa.min_dolar}}" max="{{fixa.dolar_vol}}" ng-model="fixa.fixated_dolar" flex="70" style="margin-left: 20px;"></md-slider>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Volume" class="fixa-input" ng-model="fixa.fixated_dolar">
+      <span class="fixa-input-label">volume /TON</span>
+    </div>
+    <div flex="20">
+      <input type="number" placeholder="Preço" class="fixa-input" ng-model="fixa.dolar">
+      <span class="fixa-input-label">preço</span>
+    </div>
+    <div flex="10">
+      <label class="switch">
+        <input type="checkbox" ng-model="fixa.dolar_flag">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+
+  <div align="right">
+    <button class="fixa-btn" ng-click="newFixa()">Adicionar</button>
+  </div>
+</div>

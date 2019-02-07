@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="oraculo">
+  <head>
+    <title>Oráculo Dashboard</title>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#423F50">
+
+    <!-- FAV ICON -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/angular-material.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/angular-carousel.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/hover.css">
+    <link rel="stylesheet" href="assets/css/md-data-table.min.css">
+    
+    <link rel="stylesheet" href="views/auth/login/login.css">
+    <link rel="stylesheet" href="views/portal/home/home.css">
+    <link rel="stylesheet" href="views/portal/settings/settings.css">
+  </head>
+
+    <body>
+        <div ng-show="1 == 0" class="loadingDot1">
+            <div class="loadingDot2">
+                <div class="spinner">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-cloak ng-show="isLoading" class="isLoading" layout="column" layout-align="center center">
+            <div layout="row" layout-align="center center" aria-label="wait">
+                <md-progress-circular md-mode="indeterminate" style=" z-index: 99999999"></md-progress-circular>
+            </div>
+        </div>
+
+        <div style="width:100%;height:100%" ui-view></div>
+    </body>
+
+    <!-- Angular -->
+    <script src="assets/js/lib/angular.min.js"></script>
+    <script src="assets/js/lib/angular-ui-router.min.js"></script>
+    <script src="assets/js/lib/angular-animate.min.js"></script>
+    <script src="assets/js/lib/angular-aria.min.js"></script>
+    <script src="assets/js/lib/ngMask.min.js"></script>
+    <script src="assets/js/lib/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="assets/js/lib/angular-material.min.js"></script>
+    <script src="assets/js/lib/md-data-table.min.js"></script>
+
+    <script src="assets/js/utils/Chart.bundle.js"></script>
+    <script src="assets/js/utils/angular-md5.min.js"></script>
+
+    <script src="views/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="views/auth/login/login.config.js"></script>
+    <script src="views/auth/login/login.controller.js"></script>
+
+    <script src="views/portal/components/sidebar.controller.js"></script>
+
+    <script src="views/portal/portal.js"></script>
+    
+    <script src="views/portal/home/home.controller.js"></script>
+    <script src="views/portal/settings/settings.controller.js"></script>
+
+</html>

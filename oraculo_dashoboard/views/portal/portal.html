@@ -1,0 +1,41 @@
+<md-content class="bg-color h100">
+
+	<section layout="row" flex class="h100">
+	  <div ui-view="sidebar"></div>
+
+	  <md-content flex class="wh100" content-size style="background-color: #29313C">
+			<div ui-view class="contentPortal"></div>
+				
+
+      <div class="notification-container" layout="column">
+				<div layout="row" layout-align="center center" class="notification-btn" style="margin-top: 10px;">
+					<img src="/assets/images/icons/notification.png" style="height: 20px; cursor: pointer;" title="Notificações" ng-click="myCssVar='notification-container'" ng-if="!unreadNotification"/>
+					<img src="/assets/images/icons/notification_actived.png" style="height: 20px; cursor: pointer;" title="Notificações" ng-click="myCssVar='notification-container'" ng-if="unreadNotification"/>
+				</div>
+				<div layout="column" class="notification-content" style="overflow-y: auto;">
+					<h3 style="color:#29313C;">Notificações</h3>
+					<div ng-repeat="notification in notifications" layout="row" style="{{$index != 0 ? 'border-top: 1px solid rgba(0, 0, 0, 0.3); margin-top: 10px; padding-top: 10px;': ''}};">
+						<div layout="column" style="color: #222; text-transform:capitalize; font-size:13px; cursor: pointer;" flex="95" ng-click="seenNotification(notification.id, $index)">
+							<b>{{notification.message | limitTo: 20}}...</b>
+							<div style="font-size:11px;" layout="row" layout-align="space-between">
+								<span>
+									{{notification.notification_type}}
+								</span>
+								<span>
+									{{notification.date}}
+								</span>
+							</div>
+						</div>
+						<div flex="05" layout-align="center center">
+							<div ng-if="notification.status === 'unseen'" class="notification-status"></div>
+						</div>
+					</div>
+					<div ng-show="notifications.length == 0" align="center">
+						<h4>Nenhum notificação disponível.</h4>
+					</div>
+				</div>
+      </div>
+	  </md-content>
+	</section>
+
+</md-content>

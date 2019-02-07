@@ -1,0 +1,62 @@
+<div class="order_pendent-header-container" layout="row">
+  NOTIFICAÇÕES
+</div>
+<div layout="column" class="order-pedent-container">
+
+  <div class="actived_alerts-container">
+    <div layout="row" align="center">
+      <div class="notifcation-text">
+        Dados Swing
+      </div>
+      <div style="width: 20%; text-align: center;">
+        <label class="switch">
+          <input type="checkbox" ng-model="noficationDatas.swing" ng-change="updateNotificationsDatas()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="actived_alerts-container notification-border-top" >
+    <div layout="row" align="center">
+      <div class="notifcation-text">
+        Dados Raros
+      </div>
+      <div style="width: 20%; text-align: center;">
+        <label class="switch">
+          <input type="checkbox" ng-model="noficationDatas.rare" ng-change="updateNotificationsDatas()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="actived_alerts-container notification-border-top" >
+    <div layout="row" align="center">
+      <div class="notifcation-text">
+        Dados Intra Day
+      </div>
+      <div style="width: 20%; text-align: center;">
+        <label class="switch">
+          <input type="checkbox" ng-model="noficationDatas.intra_day" ng-change="updateNotificationsDatas()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="actived_alerts-container notification-border-top" >
+    <div layout="row" align="center">
+      <div class="notifcation-text">
+        Frame
+      </div>
+      <div style="width: 20%; text-align: center;">
+        <label class="switch">
+          <input type="checkbox" ng-model="noficationDatas.frame" ng-change="updateNotificationsDatas()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div>

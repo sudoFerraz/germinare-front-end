@@ -1,0 +1,85 @@
+<div class="order_pendent-header-container">ORDENS PENDENTES</div>
+<div layout="column" class="order-pedent-container">
+  
+  <div layout="row" class="order_pendent-header">
+    <div class="order_pendent-header-title">Váriavel</div>
+    <div class="order_pendent-header-title">Preço</div>
+    <div class="order_pendent-header-title">Volume</div>
+    <div class="order_pendent-header-title">Ações</div>
+  </div>
+
+  <div style="max-height:250px; overflow-y:auto">
+    <div layout="column" ng-repeat="order in ordersPendents" style="border-top: {{$index != 0? '1px solid rgba(255, 255, 255, 0.6)': 'none'}}; overflow-y:auto; margin-top: 5px; padding-top: 30px;">
+      <div layout="row" style="padding: 5px 0;" ng-if="order.cbot_price">
+        <div layout="column" class="order_pendent-header-title">
+          <div>CBOT</div>
+        </div>
+        <div class="order_pendent-header-title">
+          <span class="order-pedent-text-filled">{{order.cbot_price | number: 0}}</span>
+        </div>
+        <div class="order_pendent-header-title">
+          <span>
+              {{order.fixated_cbot | number: 0}}/ton
+          </span>
+        </div>
+        <div class="order_pendent-header-title" ng-if="!order.dolar_price || !order.basis_price">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Recusar" ng-click="responseOrder(order.id, 0, $index)"/>
+          <img src="/assets/images/icons/accept.png" class="order-pedent-btn" title="Aceitar" style="margin-left: 5px;" ng-click="responseOrder(order.id, 1, $index)"/>
+        </div>
+      </div>
+  
+      <div layout="row" style="padding: 5px 0; {{order.cbot_price ? 'border-top: 1px solid rgba(255, 255, 255, 0.1)': ''}}" ng-if="order.basis_price">
+        <div layout="column" class="order_pendent-header-title">
+          <div>BASIS</div>
+        </div>
+        <div class="order_pendent-header-title">
+          <span class="order-pedent-text-filled">{{order.basis_price | number: 0}}</span>
+        </div>
+        <div class="order_pendent-header-title">
+          <span>
+            {{order.fixated_basis | number: 0}}/ton
+          </span>
+        </div>
+        <div class="order_pendent-header-title" ng-if="(order.cbot_price && order.dolar_price) || !order.cbot_price">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Recusar" ng-click="responseOrder(order.id, 0, $index)"/>
+          <img src="/assets/images/icons/accept.png" class="order-pedent-btn" title="Aceitar" style="margin-left: 5px;" ng-click="responseOrder(order.id, 1, $index)"/>
+        </div>
+      </div>
+  
+      <div layout="row" style="padding: 5px 0; {{order.basis_price || order.cbot_price ? 'border-top: 1px solid rgba(255, 255, 255, 0.1)': ''}}" ng-if="order.dolar_price">
+        <div layout="column" class="order_pendent-header-title">
+          <div>DÓLAR</div>
+        </div>
+        <div class="order_pendent-header-title">
+          <span class="order-pedent-text-filled">{{order.dolar_price | number: 0}}</span>
+        </div>
+        <div class="order_pendent-header-title">
+          <span>
+              {{order.fixated_dolar | number: 0}}/ton
+          </span>
+        </div>
+        <div class="order_pendent-header-title" ng-if="!order.cbot_price && !order.basis_price">
+          <img src="/assets/images/icons/decline.png" class="order-pedent-btn" title="Recusar" ng-click="responseOrder(order.id, 0, $index)"/>
+          <img src="/assets/images/icons/accept.png" class="order-pedent-btn" title="Aceitar" style="margin-left: 5px;" ng-click="responseOrder(order.id, 1, $index)"/>
+        </div>
+      </div>
+
+      <div layout="row" style="padding-bottom: 20px; margin-top: 5px;" layout-aling="center center">
+        <div flex="25" layout="row" style="font-size: 11px; color: #fff; text-align: center;" layout-aling="center center" align="center">
+          <span style="width: 100%;">{{order.date}}</span>
+        </div>
+
+        <div flex="25" layout="row" style="font-size: 11px; color: #fff; text-align: center;" layout-aling="center center" align="center">
+          <span style="width: 100%;">
+            <span class="order_pendent-sub-text" style="font-size: 11px; margin: 0; text-transform: uppercase;">{{order.reference_month | limitTo: 3}}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  
+    <div ng-show="ordersPendents.length == 0" layout="row" layout-align="center center">
+      <h5>Nenhuma ordem encontrada.</h5>
+    </div>
+  </div>
+
+</div>

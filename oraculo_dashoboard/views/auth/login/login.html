@@ -1,0 +1,32 @@
+<div style="background-image: url('assets/images/background.jpg'); height: 100%; width: 100%; background-position: center center; background-size: cover;">
+
+    <md-content class="loginStyle" style="height: 100%; width: 100%;" layout="column" layout-align="center center">
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center center" class="divColumn">
+          <div align="center">
+            <img src="assets/images/logo.png" style="width: 300px;">
+            <p>Bem Vindo ao <strong>Oráculo</strong>.</p>
+            <p>Para continuar, realize seu login!</p>
+          </div>
+
+          <div layout="column" layout-align="center center">
+            <div>
+              <input type="text" name="username" placeholder="Usuário" class="loginMail" ng-model="userLogin.email" ng-enter="makeLogin()">
+            </div>
+            <div>
+              <input type="password" name="password" placeholder="Password" class="loginPass" ng-model="userLogin.password" ng-enter="makeLogin()">
+            </div>
+          </div>
+
+           <div class="h100px" align="center">
+              <button class="buttonLogin" style="margin-top: 15px;" ng-click="makeLogin()" title="Entrar">
+                <b>Entrar</b>
+              </button>
+          </div>
+
+        </div>
+      </div>
+    </md-content>
+
+
+</div>

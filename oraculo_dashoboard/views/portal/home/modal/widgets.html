@@ -1,0 +1,42 @@
+<md-dialog aria-label="Widgets">
+  <form ng-cloak>
+    <md-toolbar style="background: #29313C">
+      <div class="md-toolbar-tools">
+        <h2>Widgets</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="column">
+          <div layout="row" ng-repeat="widget in widgets" ng-show="widgets !== 0">
+            <md-checkbox
+                ng-model="widgets[$index].enableToShow"
+                aria-label="{{widget.type}}"
+                class="md-align-top-left" flex>
+              {{widget.type}}<br/>
+              <span style="font-size: 12px;">
+                {{widget.reference_month}} - {{widget.reference_year}}
+              </span>
+              <br/>
+            </md-checkbox>
+          </div>
+          <div ng-show="widgets.length === 0 || !widgets" layout="row" layout-align="center center">
+            <h4>Nenhum Widget Disponível.</h4>
+          </div>
+        </div>
+        
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()">
+        Confirmar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

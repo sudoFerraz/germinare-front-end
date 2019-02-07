@@ -1,0 +1,20 @@
+<div layout="row" layout-align="space-between" style="height: 20px; width: 100%;">
+  <div>
+    <span style="color: #fff; text-transform: uppercase; font-size: 15px;">FRAME</span>
+  </div>
+</div>
+
+<div>
+  <div layout="row" layout-align="space-between center" style="padding-left: 3%; padding-right: 10px; color: #626364; border: 1px solid #626364; border-left: none; border-right: none; height: 30px;" ng-show="selectedContractMonths.length != 0">
+    <span class="{{selectedMonth == month? 'period_fixed-actived':''}}" ng-click="selectMonth(month)" ng-repeat="month in selectedContractMonths" style="cursor: pointer;">{{month.reference_month}}</span>
+  </div>
+
+  <!-- <canvas id="frameChart" style="height:250px; width:100%; padding-top: 10px;"></canvas> -->
+<!-- 
+  <div layout="row" style="margin-top: 10px; width: 100%;" align="center">
+    <div flex ng-repeat="frameSubValue in frameSubValues" style="color:#fff">{{frameSubValue[1]}}</div>
+  </div> -->
+  <!-- <div layout="row" style="margin-top: 10px;" align="center">
+    <div style="color: #61AE48; width: {{100/frameValues.length}}%" ng-repeat="value in frameValues">{{value}}</div>
+  </div> -->
+</div>

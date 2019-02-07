@@ -1,0 +1,81 @@
+<md-sidenav
+	class="md-sidenav-left sidebar-sidenav"
+	md-component-id="left"
+	md-is-locked-open="$mdMedia('gt-sm')"
+	md-disable-backdrop
+	md-whiteframe="4">
+
+	<md-content class="sidebarMd-content sidebar-content">
+		<div class="sidebar_logo-container" align="center">
+			<img src="/assets/images/logo.png" style="width:auto; max-height: 35px;" title="Oráculo">
+		</div>
+
+		<div class="sidebar_boder-bottom">
+			<div layout="row" layout-wrap layout-align="center center">
+				<div flex="33" align="center">
+					<img src="/assets/images/icons/dash.png" style="height: 20px; cursor: pointer;" title="Home" ng-click="goTo('portal.home')" ng-show="selectedView != 'portal.home'"/>
+					<img src="/assets/images/icons/dash_actived.png" style="height: 20px; cursor: pointer;" title="Home" ng-show="selectedView == 'portal.home'"/>
+				</div>
+				<div flex="33" align="center">
+					<img src="/assets/images/icons/settings.png" style="height: 20px; cursor: pointer;" title="Configurações" ng-click="goTo('portal.settings')" ng-show="selectedView != 'portal.settings'"/>
+					<img src="/assets/images/icons/settings_actived.png" style="height: 20px; cursor: pointer;" title="Configurações" ng-show="selectedView == 'portal.settings'"/>
+				</div>
+				<div flex="33" align="center">
+					<img src="/assets/images/icons/logout.png" style="height: 20px; cursor: pointer;" title="Logout" ng-click="logout()"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="sidebar_boder-bottom">
+			<h5 style="color: #7B7B7B">Escolha o frame:</h5>
+			<select class="sidebar-select-option" ng-model="optionsContract.frame" ng-change="getSingleContract(optionsContract.frame)">
+					<option value="" selected>Escolha o frame</option>
+				<option ng-repeat="contract in contracts" value="{{contract.id}}">{{contract.name}}</option>
+			</select>
+		</div>
+
+		<div class="sidebar_boder-bottom" align="left">
+			<div>
+				<h5 class="sidebar_parameters-title">Cidade de Origem</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.origin_city}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Cidade de Destino</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.destiny_city}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Frete</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.frete}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Imposto</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.tax}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Encargos</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.encargos}}%</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Fee</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.fee}}</span>	
+			</div>
+		</div>
+		
+		<div class="sidebar_boder-bottom" align="left">
+			<h4 class="sidebar_rule-title">Regra de Negócio</h4>
+			<div>
+				<h5 class="sidebar_parameters-title">CBOT</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.cbot_rule}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Prêmio</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.premio_rule}}</span>	
+			</div>
+			<div class="sidebar_parameter-margin">
+				<h5 class="sidebar_parameters-title">Dólar</h5>
+				<span class="sidebar_parameters-text">{{selectedContract.dolar_rule}}</span>	
+			</div>
+		</div>
+
+	</md-content>
+</md-sidenav>

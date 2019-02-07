@@ -1,0 +1,42 @@
+<md-dialog aria-label="Widgets">
+  <form ng-cloak>
+    <md-toolbar style="background: #29313C">
+      <div class="md-toolbar-tools">
+        <h2>Consulta Rápida</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content style="background: #29313C">
+      <div class="md-dialog-content" style="background: #29313C">
+        
+        <div layout="column" layout-aling="center center">
+
+          <div layout="row" layout-aling="center center">
+            <div class="card_consult-left">CBOT</div>
+            <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.cbot" ng-change="calculateFrame()">
+          </div>
+
+          <div layout="row" layout-aling="center center" style="margin-top: 10px;">
+            <div class="card_consult-left">BASIS</div>
+            <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.basis" ng-change="calculateFrame()">
+          </div>
+
+          <div layout="row" layout-aling="center center" style="margin-top: 10px;">
+            <div class="card_consult-left">DÓLAR</div>
+            <input type="number" class="card_consult-right" style="border:none;" align="center" ng-model="fast_query.dolar" ng-change="calculateFrame()">
+          </div>
+
+          <div style="margin-top: 20px;" layout="row">
+            <div class="card_consult-left">PREÇO</div>
+            <div class="card_consult-right" align="center" style="border: 1px dotted #fff; background: transparent; color: #fff">R$ {{fast_query.price}}/ton</div>
+          </div>
+        </div>
+        
+      </div>
+    </md-dialog-content>
+  </form>
+</md-dialog>

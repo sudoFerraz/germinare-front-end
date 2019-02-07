@@ -1,0 +1,102 @@
+<div align="right">
+  <button class="fixa-btn" ng-click="openModalWidgets()">+</button>
+</div>
+
+<div layout="row" layout-wrap>  
+  
+  <div layout="column" flex="100" class="frame_container">
+    <div layout="row" layout-align="space-between" style="height: 20px; width: 100%;">
+      <div>
+        <span style="color: #fff; text-transform: uppercase; font-size: 15px;">FRAME</span>
+      </div>
+    </div>
+
+    <div align="center" ng-show="!selectedContractMonths || selectedContractMonths.length == 0">
+      <h5 style="color:#fff; font-size:20px;">Nenhum contrato selecionado.</h5>
+    </div>
+    
+    <div>
+      <div ng-show="selectedContractMonths && selectedContractMonths.length != 0"
+        layout="row" layout-align="space-between center" layout-wrap
+        style="padding-left: 3%; padding-right: 10px; color: #626364; border: 1px solid #626364; border-left: none; border-right: none; height: 30px;" ng-show="selectedContractMonths.length != 0">
+        <span class="{{selectedMonth == month? 'period_fixed-actived':''}}" ng-click="selectMonth(month)" ng-repeat="month in selectedContractMonths" style="cursor: pointer;">{{month.reference_month}}</span>
+      </div>
+    
+      <canvas id="frameChart" style="height:{{selectedContractMonths && selectedContractMonths.length != 0 ? '250px':'0'}}; width:100%; padding-top: 10px;"></canvas>
+    </div>
+    
+    <div style="margin-top: 25px;" ng-show="selectedContractMonths && selectedContractMonths.length != 0">
+      <div layout="row" style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.5);" align="center">
+        <div flex="5"></div>
+        <b style="color: #5FA046; width: {{100/selectedContractMonths.length + 1}}%" ng-repeat="data in selectedContractMonths">{{data.reference_month}}</b>
+      </div>
+
+      <div layout="row" style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3);" align="center">
+        <div style="color: #fff;" flex="5">VL</div>
+        <div style="color: #fff; width: {{100/selectedContractMonths.length + 1}}%" ng-repeat="data in selectedContractMonths">{{data.frame_quote | number : 2}}</div>
+      </div>
+
+      <div layout="row" style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3);" align="center">
+        <div style="color: #fff;" flex="5">GX</div>
+        <div style="color: #fff; width: {{100/selectedContractMonths.length}}%" ng-repeat="data in selectedContractMonths">{{data.cbot_fixated_percentage * 100 | number : 2}}%</div>
+      </div>
+
+      <div layout="row" style="padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3);" align="center">
+        <div style="color: #fff;" flex="5">B</div>
+        <div style="color: #fff; width: {{100/selectedContractMonths.length}}%" ng-repeat="data in selectedContractMonths">{{data.basis_fixated_percentage * 100 | number : 2}}%</div>
+      </div>
+
+      <div layout="row" style="padding: 10px 0;" align="center">
+        <div style="color: #fff;" flex="5">Câ</div>
+        <div style="color: #fff; width: {{100/selectedContractMonths.length}}%" ng-repeat="data in selectedContractMonths">{{data.dolar_fixated_percentage * 100 | number : 2}}%</div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-include="'views/portal/home/cards/fixedPeriod.html'" flex="100" layout="column" class="home_card" style="margin-top:10px; padding-bottom: 0px;">
+  </div>
+
+  <div flex="100" layout="row" sm-layout="column" layout-wrap>
+
+    <div ng-include="'views/portal/home/cards/query.html'"
+    flex-gt-sm="33" flex-md="33" flex-sm="100" layout="column" layout-align="center center"
+    ng-show="selectedContractMonths && selectedContractMonths.length != 0"
+    class="home_card" style="height: auto; margin-top: 10px;">
+    </div>
+
+    <div
+      flex-gt-sm="{{widget.size}}" flex-md="{{widget.size}}" flex-sm="100" layout="row" layout-align="center center"
+      ng-repeat="widget in widgets | orderBy:'priority' track by $index " ng-show="widget.enableToShow"
+      class="home_card" style="height: auto; background: #3F4650; padding: 1px; {{($index+1)%3==0? 'margin-left:0; margin-top: 10px;': 'margin-left:5px; margin-top: 10px;'}}"
+      >
+      <div layout="column" layout-align="center center" style="padding: 0; margin: 0;" flex>
+        <div style="height:35px; width:100%;" layout="row" layout-align="space-between">
+          <div flex layout="row" layout-align="start center">
+            <div>
+              <span ng-click="downWidget(widget.priority)" class="widget-btn"><</span>
+            </div>
+            <div>
+              <span ng-click="upWidget(widget.priority)" class="widget-btn">></span>
+            </div>
+          </div>
+          <div flex layout="row" layout-align="end center">
+            <span ng-click="setWidgetSize(widget.priority, 1)" class="widget-btn"
+              style="color: {{ widget.size == 33 ? '#222': '#fff'}}">Pequeno</span>
+            <span ng-click="setWidgetSize(widget.priority, 2)" class="widget-btn"
+              style="color: {{ widget.size == 66 ? '#222': '#fff'}}">Médio</span>
+            <span ng-click="setWidgetSize(widget.priority, 3)" class="widget-btn"
+              style="color: {{ widget.size == 100 ? '#222': '#fff'}}">Grande</span>
+          </div>
+
+        </div>
+        <div data-ng-bind-html="trustAsHtml(widget.url)" style="width:100%;" flex></div>
+      </div>
+      
+    </div>
+
+
+  </div>
+
+</div>
+
+

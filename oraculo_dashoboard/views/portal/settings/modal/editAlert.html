@@ -1,0 +1,81 @@
+<md-dialog aria-label="Widgets">
+  <form ng-cloak>
+    <md-toolbar style="background: #29313C">
+      <div class="md-toolbar-tools">
+        <h2>Editar Alerta</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content style="background-color: #464E57">
+      <div class="md-dialog-content" style="background-color: #464E57">
+
+        <div layout="column" class="order-pedent-container">
+          <div layout="row" align="center" style="padding: 15px 10px;">
+            <div style="color: #fff" flex>CBOT</div>
+            <div flex>
+              <img src="/assets/images/icons/slider_desactived.png" title="Ativar" ng-show="selectedActivedAlertEdit.direction_cbot == 0" ng-click="selectedActivedAlertEdit.direction_cbot = 1" class="alert-img">
+              <img src="/assets/images/icons/slider_actived.png" title="Desativar" ng-show="selectedActivedAlertEdit.direction_cbot == 1" ng-click="selectedActivedAlertEdit.direction_cbot = 0" class="alert-img">
+            </div>
+            <div flex>
+              <input type="number" placeholder="Preço" class="fixa-input" ng-model="selectedActivedAlertEdit.trigger_cbot">
+            </div>
+            <div flex>
+              <label class="switch">
+                <input type="checkbox" ng-model="selectedActivedAlertEdit.flag_cbot">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        
+          <div layout="row" align="center" style="padding: 15px 10px;">
+            <div style="color: #fff" flex>BASIS</div>
+            <div flex>
+              <img src="/assets/images/icons/slider_desactived.png" title="Ativar" ng-show="selectedActivedAlertEdit.direction_basis == 0" ng-click="selectedActivedAlertEdit.direction_basis = 1" class="alert-img">
+              <img src="/assets/images/icons/slider_actived.png" title="Desativar" ng-show="selectedActivedAlertEdit.direction_basis == 1" ng-click="selectedActivedAlertEdit.direction_basis = 0" class="alert-img">
+            </div>
+            <div flex>
+              <input type="number" placeholder="Preço" class="fixa-input" ng-model="selectedActivedAlertEdit.trigger_basis">
+            </div>
+            <div flex>
+              <label class="switch">
+                <input type="checkbox" ng-model="selectedActivedAlertEdit.flag_basis">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        
+          <div layout="row" align="center" style="padding: 15px 10px;">
+            <div style="color: #fff" flex>DÓLAR</div>
+            <div flex>
+              <img src="/assets/images/icons/slider_desactived.png" title="Ativar" ng-show="selectedActivedAlertEdit.direction_dolar == 0" ng-click="selectedActivedAlertEdit.direction_dolar = 1" class="alert-img">
+              <img src="/assets/images/icons/slider_actived.png" title="Desativar" ng-show="selectedActivedAlertEdit.direction_dolar == 1" ng-click="selectedActivedAlertEdit.direction_dolar = 0" class="alert-img">
+            </div>
+            <div flex>
+              <input type="number" placeholder="Preço" class="fixa-input" ng-model="selectedActivedAlertEdit.trigger_dolar">
+            </div>
+            <div flex>
+              <label class="switch">
+                <input type="checkbox" ng-model="selectedActivedAlertEdit.flag_dolar">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" style="background-color: #464E57">
+      <md-button ng-click="cancel()" style="color: #fff">
+        Cancelar
+      </md-button>
+      <md-button ng-click="updateActiveAlert()" style="color: #fff">
+        Editar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

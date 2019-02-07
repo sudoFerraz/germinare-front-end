@@ -1,0 +1,38 @@
+<md-dialog aria-label="Widgets">
+  <form ng-cloak>
+    <md-toolbar style="background: #29313C">
+      <div class="md-toolbar-tools">
+        <h2>Notificação</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeNotificationModal()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout="column">
+          <div layout="column" style="color: #222; text-transform:capitalize; font-size:13px; cursor: pointer;" flex="95" ng-click="seenNotification(notification.id, $index)">
+            <b>{{selectedNotification.message}}</b>
+            <div style="font-size:11px;" layout="row" layout-align="space-between">
+              <span>
+                {{selectedNotification.notification_type}}
+              </span>
+              <span>
+                {{selectedNotification.date}}
+              </span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="closeNotificationModal()">
+        Fechar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

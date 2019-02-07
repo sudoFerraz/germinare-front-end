@@ -1,0 +1,108 @@
+<div layout="row" layout-align="space-between" class="card_title_container">
+  <div class="card_title">% FIXADA - PRAZO</div>
+  <div class="card_title" ng-click="fixedPeriodHidden = !fixedPeriodHidden" style="margin: 0; cursor: pointer;">
+    {{!fixedPeriodHidden? 'Minimizar':'Expandir'}}
+  </div>
+</div>
+<div layout="row" layout-align="space-between" ng-show="!fixedPeriodHidden">
+  <span class="{{selectedMonth == month? 'period_fixed-actived':'period_fixed-desactived'}}" ng-click="selectMonth(month)" ng-repeat="month in selectedContractMonths">{{month.reference_month}}</span>
+</div>
+
+<div ng-show="!fixedPeriodHidden && (!selectedContractMonths || selectedContractMonths.length == 0)" align="center">
+  <h5 style="color:#fff; font-size:20px;">Nenhum contrato selecionado.</h5>
+</div>
+
+<div class="flex-wrapper" ng-show="!fixedPeriodHidden && (selectedContractMonths && selectedContractMonths.length != 0)">
+  <div class="single-chart">
+    <svg viewbox="0 0 36 36" class="circular-chart {{getFixedColor(selectedMonth.cbot_fixated_percentage*100)}}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="{{selectedMonth.cbot_fixated_percentage* 100}}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">{{selectedMonth.cbot_fixated_percentage* 100 | number: 2}}%</text>
+    </svg>
+    <span class="circle-chart-title">CBOT (%)</span>
+    <div style="padding: 25px;">
+      <div layout="row" layout-align="space-between">
+        <span class="progress-bar-text color-{{getFixedColor(selectedMonth.cbot_fixated_percentage*100)}}">{{selectedMonth.fixated_cbot}}ton</span>
+        <span class="progress-bar-text">{{selectedMonth.cbot_volume}}</span>
+      </div>
+      <div class="progrss-bar-container" align="left">
+        <div class="progrss-bar-content bg-{{getFixedColor(selectedMonth.cbot_fixated_percentage*100)}}" style="width: {{selectedMonth.cbot_fixated_percentage* 100}}%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="single-chart">
+    <svg viewbox="0 0 36 36" class="circular-chart {{getFixedColor(selectedMonth.basis_fixated_percentage*100)}}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="{{selectedMonth.basis_fixated_percentage * 100}}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">{{selectedMonth.basis_fixated_percentage* 100 | number: 2}}%</text>
+    </svg>
+    <span class="circle-chart-title">BASIS (%)</span>
+    <div style="padding: 25px;">
+      <div layout="row" layout-align="space-between">
+        <span class="progress-bar-text color-{{getFixedColor(selectedMonth.basis_fixated_percentage*100)}}">{{selectedMonth.fixated_basis}}ton</span>
+        <span class="progress-bar-text">{{selectedMonth.basis_volume}}</span>
+      </div>
+      <div class="progrss-bar-container" align="left">
+        <div class="progrss-bar-content bg-{{getFixedColor(selectedMonth.basis_fixated_percentage*100)}}" style="width: {{selectedMonth.basis_fixated_percentage * 100}}%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="single-chart">
+    <svg viewbox="0 0 36 36" class="circular-chart {{getFixedColor(selectedMonth.dolar_fixated_percentage*100)}}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="{{selectedMonth.dolar_fixated_percentage* 100}}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">{{selectedMonth.dolar_fixated_percentage* 100 | number: 2}}%</text>
+    </svg>
+    <span class="circle-chart-title">DÓLAR (%)</span>
+    <div style="padding: 25px;">
+      <div layout="row" layout-align="space-between">
+        <span class="progress-bar-text color-{{getFixedColor(selectedMonth.dolar_fixated_percentage*100)}}">{{selectedMonth.fixated_dolar}}ton</span>
+        <span class="progress-bar-text">{{selectedMonth.dolar_volume}}</span>
+      </div>
+      <div class="progrss-bar-container" align="left">
+        <div class="progrss-bar-content bg-{{getFixedColor(selectedMonth.dolar_fixated_percentage*100)}}" style="width: {{selectedMonth.dolar_fixated_percentage * 100}}%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="single-chart">
+    <svg viewbox="0 0 36 36" class="circular-chart blue" style="background: #eee; border-radius: 50%; max-width: 50%; ">
+      <path class="circle-bg" style="stroke: #eee;"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="circular-days">{{selectedMonth.days_to_end}}</text>
+    </svg>
+    <span class="circle-chart-title">DIAS PARA O FECHAMENTO</span>
+  </div>
+</div>
